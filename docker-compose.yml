@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+   aur-deploy:
+      container_name: aur-deploy
+      build:
+         context: ./
+         dockerfile: ./Dockerfile
+      volumes:
+         - ./volume:/usr/volume
+      environment:
+         REPO: ssh://aur@aur.archlinux.org/scorespy-launcher.git
+         CRON: "0 * * * *"
+   
