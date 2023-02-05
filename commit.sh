@@ -1,6 +1,7 @@
 #!/bin/bash
 cd /usr/files/repo
 echo "==> Checking for updates..."
+git pull || exit 1
 /usr/volume/script/script.sh
 git clean -fdx
 if [[ `git status --porcelain` ]]; then
