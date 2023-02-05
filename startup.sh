@@ -4,7 +4,7 @@ mkdir -p /usr/volume/common/ssh && chown user:user /usr/volume/common/ssh && chm
 touch /usr/volume/common/gitconfig
 if [ -z "$(ls -A ~/.ssh/)" ]; then
     echo "==> SSH folder empty. Generating key..."
-    ssh-keygen -t ed25519 -C "aur-updater" -f "/usr/volume/common/ssh/id_ed25519" -N ""
+    ssh-keygen -t ed25519 -C "aur-deploy" -f "/usr/volume/common/ssh/id_ed25519" -N ""
     echo "==> Public key:"
     cat ~/.ssh/id_ed25519.pub
 fi
@@ -21,7 +21,7 @@ else
 fi
 rm -f /usr/volume/common/ssh/known_hosts.old
 echo "==> Ready. Cron job is scheduled."
-R=$(echo "$CRON" | sed "s/\\//\\\\\\//g")
-sed "s/%CRON%/$R/" /usr/files/cron > /usr/files/.cron
+R=$(echo "$CRON")
+sed "s|%CRON%|$R|" /usr/files/cron > /usr/files/.cron
 crontab /etc/cron.d/.cron
 doas `which crond` -n
