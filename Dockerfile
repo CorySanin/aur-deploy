@@ -5,7 +5,7 @@ WORKDIR /usr/files
 ENV REPO="git@github.com:torvalds/linux.git"
 ENV CRON="0 * * * *"
 
-RUN pacman -Sy --noconfirm openssh git jq cronie doas && \
+RUN pacman -Sy --noconfirm openssh git jq libxml2 cronie doas && \
   groupadd user && \
   useradd -m -g user user && \
   ln -sf /usr/files/.cron /etc/cron.d/.cron && \
