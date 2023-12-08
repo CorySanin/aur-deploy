@@ -30,3 +30,5 @@ Note that if the ssh directory is empty, a key will be automatically generated. 
 ## script.sh
 
 This script runs within the repository directory. It should check for an update and make the appropriate changes to the PKGBUILD file. No need to update the .SRCINFO and no need to stage PKGBUILD or .SRCINFO. All other files that aren't staged will be removed, so don't worry about cleaning up.
+
+The script is also responsible for updating checksums. Consider using `git diff --exit-code PKGBUILD || updpkgsums` at the end of the script. This will only update checksums if a change is detected.
