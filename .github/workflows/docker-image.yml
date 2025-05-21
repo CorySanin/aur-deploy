@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DH_REGISTRY: docker.io
-      IMAGE_NAME: ${{ github.repository }}
       REPOSITORY: ${{ github.event.repository.name }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
     permissions:
@@ -46,7 +45,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v3
       with:
-        images: ${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
+        images: ${{ env.DOCKER_USERNAME }}/${{ env.REPOSITORY }}
         tags: type=raw,value=latest
 
     - name: Push to Docker Hub
