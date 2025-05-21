@@ -1,6 +1,10 @@
 # aur-deploy
 Docker image that automates the updating of AUR packages or other git repositories
 
+## CI
+
+Thanks to GitHub automatically disabling rehydration of my images, I've moved this project to [my personal Gitea instance](https://git.sanin.dev/corysanin/aur-deploy). Builds now run within Gitea.
+
 ## Configuration
 
 Use the provided [docker-compose file](docker-compose.yml) as a guide. 
