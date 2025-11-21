@@ -6,7 +6,7 @@ git pull || exit 1
 git clean -fdx
 if [[ `git status --porcelain` ]]; then
     echo "==> Update detected"
-    sed -i -e 's|pkgrel=.*|pkgrel=1|g' ./PKGBUILD
+    sed -i -e 's|^pkgrel=.*|pkgrel=1|g' ./PKGBUILD
     makepkg --printsrcinfo > .SRCINFO
     git diff ./PKGBUILD
     git add PKGBUILD .SRCINFO
